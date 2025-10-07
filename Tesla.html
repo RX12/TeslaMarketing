@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tesla: Erfahren Sie die Fakten</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #000000;
+            color: #ffffff;
+        }
+        /* Custom scrollbar for a more modern look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+        /* Styling for the hero background */
+        .hero-bg {
+            background-image: url('NewModelY_65.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-bg::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,1) 10%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.2) 100%);
+        }
+        /* Animation for elements fading in on scroll */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Custom styles for the savings calculator slider */
+        input[type=range] {
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            background: #333;
+            height: 4px;
+            border-radius: 2px;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: -6px;
+            background-color: #E82127;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+        }
+        /* Interactive Map SVG styling */
+        .map-route {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+            animation: draw-route 5s ease-out forwards;
+        }
+        .map-charger {
+            opacity: 0;
+            animation: show-charger 0.5s ease-out forwards;
+        }
+        @keyframes draw-route {
+            to { stroke-dashoffset: 0; }
+        }
+        @keyframes show-charger {
+            to { opacity: 1; }
+        }
+        /* Timeline styling */
+        .timeline-event {
+            transition: transform 0.3s ease;
+        }
+        .timeline-event:hover {
+            transform: translateY(-5px);
+        }
+        .timeline-dot {
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .timeline-event:hover .timeline-dot {
+            background-color: #E82127;
+            transform: scale(1.2);
+        }
+        /* Ecosystem styling */
+        .ecosystem-component {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .ecosystem-component:hover, .ecosystem-component.active {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px rgba(232, 33, 39, 0.5);
+        }
+        .energy-flow {
+            stroke-dasharray: 5;
+            animation: flow 2s linear infinite;
+        }
+        @keyframes flow {
+            to { stroke-dashoffset: -20; }
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header / Navigation -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold tracking-wider">
+                T E S L A
+            </div>
+            <nav class="hidden md:flex space-x-8 font-medium">
+                <a href="#sparen" class="hover:text-gray-300">Sparen</a>
+                <a href="#service" class="hover:text-gray-300">Komfort</a>
+                <a href="#sicherheit" class="hover:text-gray-300">Sicherheit</a>
+                <a href="#erleben" class="hover:text-gray-300">Erleben</a>
+            </nav>
+            <a href="#final-cta" class="hidden md:block bg-white text-black font-semibold px-4 py-2 rounded-md hover:bg-gray-200 transition-colors">Probefahrt</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg h-screen flex items-center justify-center text-center relative">
+        <div class="relative z-10 px-4">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight fade-in-section">Glauben Sie den Fakten.</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8 fade-in-section" style="transition-delay: 200ms;">Finden Sie in 3 Schritten heraus, warum ein Tesla mehr als nur ein Auto ist. Und testen Sie es selbst – für 48 Stunden.</p>
+            <a href="#final-cta" class="bg-red-600 text-white font-bold px-8 py-4 rounded-md text-lg hover:bg-red-700 transition-colors inline-block fade-in-section" style="transition-delay: 400ms;">48h Probefahrt buchen</a>
+        </div>
+    </section>
+
+    <main>
+        <!-- Section 1: SPAREN -->
+        <section id="sparen" class="py-20 lg:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 lg:mb-20 fade-in-section">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-4">Rechnen Sie selbst: Was sparen Sie wirklich?</h2>
+                    <p class="text-lg text-gray-400">Ein einfacher Vergleich basierend auf Ihren Fahrgewohnheiten.</p>
+                </div>
+                <div class="bg-[#111] rounded-lg p-6 md:p-10 max-w-4xl mx-auto fade-in-section">
+                    <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                        <!-- Input Controls -->
+                        <div>
+                            <label for="km-slider" class="block mb-2 font-medium">Kilometer pro Woche: <span id="km-value" class="font-bold text-red-500">250</span> km</label>
+                            <input type="range" id="km-slider" min="50" max="500" value="250" step="10">
+
+                            <label for="car-type" class="block mt-6 mb-2 font-medium">Ihr aktuelles Fahrzeug</label>
+                            <select id="car-type" class="w-full bg-[#222] border border-gray-600 rounded-md p-3 focus:outline-none focus:ring-2 focus:ring-red-500">
+                                <option value="8.0">Benzin Kleinwagen (ca. 8.0l/100km)</option>
+                                <option value="10.0">Benzin SUV (ca. 10.0l/100km)</option>
+                                <option value="7.0">Diesel Limousine (ca. 7.0l/100km)</option>
+                                <option value="12.0">Benzin Sportwagen (ca. 12.0l/100km)</option>
+                            </select>
+                        </div>
+                        <!-- Results Display -->
+                        <div class="flex flex-col justify-between">
+                            <div>
+                                <h3 class="font-bold text-lg mb-4">Geschätzte monatliche Kosten</h3>
+                                <div class="space-y-3">
+                                    <!-- Bar Chart -->
+                                    <div class="flex items-center">
+                                        <span class="w-24">Ihr Auto:</span>
+                                        <div class="flex-1 bg-gray-700 rounded-full h-6 mr-2">
+                                            <div id="fuel-bar" class="bg-gray-400 h-6 rounded-full transition-all duration-500" style="width: 80%;"></div>
+                                        </div>
+                                        <span id="fuel-cost" class="font-bold w-20 text-right">€140.00</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <span class="w-24">Tesla:</span>
+                                        <div class="flex-1 bg-gray-700 rounded-full h-6 mr-2">
+                                            <div id="charge-bar" class="bg-red-600 h-6 rounded-full transition-all duration-500" style="width: 20%;"></div>
+                                        </div>
+                                        <span id="charge-cost" class="font-bold w-20 text-right">€35.00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4 mt-6 text-center">
+                                <div>
+                                    <p class="text-gray-400">Ersparnis/Jahr</p>
+                                    <p id="savings-year" class="text-2xl font-bold text-green-400">~ €1,260</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">CO2-Reduktion/Jahr</p>
+                                    <p id="co2-reduction" class="text-2xl font-bold">~ 1.8 t</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-10 text-gray-400 border-t border-gray-800 pt-6">
+                        <h3 class="font-bold text-lg mb-4 text-white">Effizienz im direkten Vergleich</h3>
+                        <p class="mb-6">Weniger Verbrauch (kWh/100km) bedeutet mehr Reichweite und niedrigere Ladekosten.</p>
+                        <div class="max-w-md mx-auto space-y-3 text-left">
+                            <div class="flex items-center">
+                                <span class="w-32">Tesla Model 3:</span>
+                                <div class="flex-1 bg-gray-700 rounded-full h-6 mr-2">
+                                    <div class="bg-red-600 h-6 rounded-full flex items-center justify-end pr-2" style="width: 70%;">
+                                        <span class="text-sm font-bold">13.2 kWh</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-32">Tesla Model Y:</span>
+                                <div class="flex-1 bg-gray-700 rounded-full h-6 mr-2">
+                                    <div class="bg-red-600 h-6 rounded-full flex items-center justify-end pr-2" style="width: 85%;">
+                                        <span class="text-sm font-bold">16.9 kWh</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-32">VW ID.4:</span>
+                                <div class="flex-1 bg-gray-700 rounded-full h-6 mr-2">
+                                    <div class="bg-gray-400 h-6 rounded-full flex items-center justify-end pr-2" style="width: 92%;">
+                                         <span class="text-sm font-bold text-black">18.2 kWh</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="w-32">BYD Atto 3:</span>
+                                <div class="flex-1 bg-gray-700 rounded-full h-6 mr-2">
+                                    <div class="bg-gray-400 h-6 rounded-full flex items-center justify-end pr-2" style="width: 95%;">
+                                         <span class="text-sm font-bold text-black">18.8 kWh</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-10 text-gray-400 border-t border-gray-800 pt-6">
+                        <p>Plus: Ein Tesla benötigt kaum Wartung – keine Ölwechsel, keine Zündkerzen, keine Abgasanlage.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: KOMFORT -->
+        <section id="service" class="py-20 lg:py-32 bg-[#0a0a0a]">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 lg:mb-20 fade-in-section">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-4">Ihr Alltag, neu definiert.</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Entdecken Sie Komfort, der über das Fahren hinausgeht – von der vollen Kontrolle in Ihrer Hand bis zum Service, der zu Ihnen nach Hause kommt.</p>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <!-- Info Display -->
+                    <div class="fade-in-section">
+                        <div class="flex border-b border-gray-700 mb-6">
+                            <button id="tab-app" class="service-tab flex-1 pb-3 font-semibold border-b-2 border-red-500 text-white">Tesla App</button>
+                            <button id="tab-service" class="service-tab flex-1 pb-3 font-semibold border-b-2 border-transparent text-gray-400">Mobile Service</button>
+                        </div>
+                        <div id="content-app">
+                            <p class="mb-6 text-gray-300">Ihr Auto in Ihrer Handfläche. Kein Schlüssel, keine Sorgen. Alles, was Sie brauchen, ist Ihr Smartphone.</p>
+                            <ul class="space-y-4">
+                                <li class="flex items-start"><span class="text-red-500 font-bold mr-3 mt-1">✓</span><div><span class="font-semibold">Schlüsselloser Zugang:</span> Ihr Handy ist Ihr Schlüssel. Das Auto entriegelt sich, wenn Sie sich nähern.</div></li>
+                                <li class="flex items-start"><span class="text-red-500 font-bold mr-3 mt-1">✓</span><div><span class="font-semibold">Vorklimatisierung:</span> Heizen oder kühlen Sie Ihr Auto vom Frühstückstisch aus – für die perfekte Temperatur bei Abfahrt.</div></li>
+                                <li class="flex items-start"><span class="text-red-500 font-bold mr-3 mt-1">✓</span><div><span class="font-semibold">Lade-Management:</span> Überwachen Sie den Ladevorgang und erhalten Sie eine Benachrichtigung, wenn Ihr Tesla bereit ist.</div></li>
+                            </ul>
+                        </div>
+                        <div id="content-service" class="hidden">
+                             <p class="mb-6 text-gray-300">Vergessen Sie Werkstattbesuche. 80% aller Servicearbeiten können dort durchgeführt werden, wo Sie parken.</p>
+                             <ul class="space-y-4">
+                                <li class="flex items-start"><span class="text-red-500 font-bold mr-3 mt-1">✓</span><div><span class="font-semibold">Einfache Buchung per App:</span> Beschreiben Sie das Problem und wählen Sie einen Termin. Den Rest erledigen wir.</div></li>
+                                <li class="flex items-start"><span class="text-red-500 font-bold mr-3 mt-1">✓</span><div><span class="font-semibold">Service vor Ihrer Haustür:</span> Unsere Techniker kommen zu Ihnen nach Hause oder ins Büro. Sie sparen Zeit und Aufwand.</div></li>
+                                <li class="flex items-start"><span class="text-red-500 font-bold mr-3 mt-1">✓</span><div><span class="font-semibold">Transparente Kostenvoranschläge:</span> Genehmigen Sie alle Arbeiten und Kosten direkt in der App, bevor der Service beginnt.</div></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Visual -->
+                    <div class="relative h-96 bg-[#111] rounded-lg flex items-center justify-center p-8 fade-in-section" style="transition-delay: 200ms;">
+                        <!-- Phone Mockup -->
+                        <div class="w-48 h-96 bg-gray-800 rounded-3xl border-4 border-gray-600 p-2 flex flex-col">
+                           <div class="bg-gray-700 h-full rounded-2xl flex flex-col justify-between p-4">
+                                <div class="text-center">
+                                    <p class="font-bold">Model Y</p>
+                                    <p class="text-xs text-gray-400">Geparkt</p>
+                                </div>
+                                <div class="text-6xl text-center opacity-20">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 mx-auto" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM8.707 6.293a1 1 0 00-1.414 1.414L8.586 9H6a1 1 0 100 2h2.586l-1.293 1.293a1 1 0 101.414 1.414L11.414 10l-2.707-2.707z" clip-rule="evenodd" /></svg>
+                                </div>
+                                <div class="grid grid-cols-2 gap-2 text-center text-xs">
+                                    <div class="bg-gray-600 p-2 rounded">Klima</div>
+                                    <div class="bg-gray-600 p-2 rounded">Laden</div>
+                                    <div class="bg-gray-600 p-2 rounded">Wächter</div>
+                                    <div class="bg-gray-600 p-2 rounded">Standort</div>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: SICHERHEIT (NEW) -->
+        <section id="sicherheit" class="py-20 lg:py-32 bg-black">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12 lg:mb-20 fade-in-section">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-4">Sicherheit, von Grund auf entwickelt.</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Die einzigartige Elektro-Architektur bietet einen extrem niedrigen Schwerpunkt und eine stabile Fahrgastzelle. Das Ergebnis: Einige der besten Sicherheitsbewertungen, die je vergeben wurden.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto fade-in-section">
+                    <!-- Safety Card 1 -->
+                    <div class="bg-[#111] p-6 rounded-lg text-center">
+                        <h3 class="font-bold text-xl mb-2">Tesla Model Y</h3>
+                        <p class="text-yellow-400 text-2xl mb-3">★★★★★</p>
+                        <p class="text-gray-300 font-semibold">Euro NCAP</p>
+                        <p class="text-gray-400 mt-4 text-sm border-t border-gray-700 pt-4">Erzielte die höchste Gesamtbewertung unter allen 2022 getesteten Fahrzeugen.</p>
+                    </div>
+                    <!-- Safety Card 2 -->
+                    <div class="bg-[#111] p-6 rounded-lg text-center border-2 border-red-500">
+                         <h3 class="font-bold text-xl mb-2">Tesla Model 3</h3>
+                        <p class="text-yellow-400 text-2xl mb-3">★★★★★</p>
+                        <p class="text-gray-300 font-semibold">Euro NCAP</p>
+                        <p class="text-gray-400 mt-4 text-sm border-t border-gray-700 pt-4">Bestnote (98%) in der Kategorie "Safety Assist" – die höchste je vergebene.</p>
+                    </div>
+                     <!-- Safety Card 3 -->
+                    <div class="bg-[#111] p-6 rounded-lg text-center">
+                        <h3 class="font-bold text-xl mb-2">VW ID.4</h3>
+                        <p class="text-yellow-400 text-2xl mb-3">★★★★★</p>
+                        <p class="text-gray-300 font-semibold">Euro NCAP</p>
+                        <p class="text-gray-400 mt-4 text-sm border-t border-gray-700 pt-4">Ein starkes Ergebnis, das den hohen Standard in der Branche zeigt.</p>
+                    </div>
+                    <!-- Safety Card 4 -->
+                    <div class="bg-[#111] p-6 rounded-lg text-center">
+                        <h3 class="font-bold text-xl mb-2">Dacia Spring</h3>
+                        <p class="text-2xl mb-3"><span class="text-yellow-400">★</span><span class="text-gray-600">★★★★</span></p>
+                        <p class="text-gray-300 font-semibold">Euro NCAP</p>
+                        <p class="text-gray-400 mt-4 text-sm border-t border-gray-700 pt-4">Zeigt, dass hohe Sicherheitsstandards in der Elektro-Klasse keine Selbstverständlichkeit sind.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: ERLEBEN -->
+        <section id="erleben" class="py-20 lg:py-32 bg-[#0a0a0a]">
+            <div class="container mx-auto px-6 text-center">
+                 <div class="mb-12 lg:mb-20 fade-in-section">
+                    <h2 class="text-3xl lg:text-5xl font-bold mb-4">Ihr Auto wird besser, während Sie schlafen.</h2>
+                    <p class="text-lg text-gray-400 max-w-3xl mx-auto">Ein Tesla ist nie fertig. Entdecken Sie, wie kontinuierliche Innovation Ihr Fahrzeug über Jahre hinweg verbessert – kostenlos per Software-Update.</p>
+                </div>
+
+                <!-- Innovation Timeline -->
+                <div class="relative max-w-5xl mx-auto mt-20 fade-in-section">
+                    <!-- The line -->
+                    <div class="absolute left-0 top-8 h-0.5 w-full bg-gray-700"></div>
+                    
+                    <!-- Timeline Events Container -->
+                    <div class="relative flex justify-between">
+                        
+                        <!-- Event 1 -->
+                        <div class="timeline-event w-1/4 text-center cursor-pointer" data-event-id="update-1">
+                            <div class="timeline-dot w-4 h-4 bg-gray-500 rounded-full mx-auto mb-2 border-2 border-black relative z-10"></div>
+                            <p class="font-semibold text-sm">Winter-Effizienz</p>
+                            <p class="text-xs text-gray-400">Dez '24</p>
+                        </div>
+
+                        <!-- Event 2 -->
+                        <div class="timeline-event w-1/4 text-center cursor-pointer" data-event-id="update-2">
+                            <div class="timeline-dot w-4 h-4 bg-gray-500 rounded-full mx-auto mb-2 border-2 border-black relative z-10"></div>
+                            <p class="font-semibold text-sm">Einpark-Visualisierung</p>
+                            <p class="text-xs text-gray-400">Apr '25</p>
+                        </div>
+                        
+                        <!-- Event 3 -->
+                        <div class="timeline-event w-1/4 text-center cursor-pointer" data-event-id="update-3">
+                            <div class="timeline-dot w-4 h-4 bg-gray-500 rounded-full mx-auto mb-2 border-2 border-black relative z-10"></div>
+                            <p class="font-semibold text-sm">Neue UI & Apps</p>
+                            <p class="text-xs text-gray-400">Aug '25</p>
+                        </div>
+                        
+                        <!-- Event 4 -->
+                        <div class="timeline-event w-1/4 text-center cursor-pointer" data-event-id="update-4">
+                            <div class="timeline-dot w-4 h-4 bg-gray-500 rounded-full mx-auto mb-2 border-2 border-black relative z-10"></div>
+                            <p class="font-semibold text-sm">Autopilot-Verbesserung</p>
+                            <p class="text-xs text-gray-400">Okt '25</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA Section -->
+        <section id="final-cta" class="py-20 lg:py-32 bg-[#0a0a0a]">
+            <div class="container mx-auto px-6 text-center fade-in-section">
+                <h2 class="text-3xl lg:text-5xl font-bold mb-4">Jetzt sind Sie dran.<br>Erfahren Sie die Fakten selbst.</h2>
+                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">Buchen Sie Ihre kostenlose 48-Stunden-Probefahrt und erleben Sie den Unterschied im Alltag – ohne Verkaufsdruck, ohne Verpflichtungen.</p>
+                <button class="bg-white text-black font-bold px-10 py-4 rounded-md text-xl hover:bg-gray-200 transition-colors">
+                    Meine 48-Stunden-Probefahrt anfragen
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for 3D View -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 flex items-center justify-center z-50 p-4 hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-[#111] rounded-lg max-w-xl w-full p-6 relative">
+            <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl leading-none">&times;</button>
+            <img id="modal-image" src="https://placehold.co/600x400/333/FFF?text=Engineer+Video" alt="Ingenieur Video" class="w-full rounded-md mb-4">
+            <h3 id="modal-title" class="text-xl font-bold mb-2">Modal Title</h3>
+            <p id="modal-text" class="text-gray-300">Modal content goes here.</p>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // --- Header Scroll Effect ---
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('bg-black', 'bg-opacity-70', 'backdrop-blur-sm');
+                } else {
+                    header.classList.remove('bg-black', 'bg-opacity-70', 'backdrop-blur-sm');
+                }
+            });
+
+            // --- Fade-in on Scroll Animation ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            sections.forEach(section => observer.observe(section));
+
+            // --- Savings Calculator Logic ---
+            const kmSlider = document.getElementById('km-slider');
+            const kmValue = document.getElementById('km-value');
+            const carType = document.getElementById('car-type');
+            const fuelCostEl = document.getElementById('fuel-cost');
+            const chargeCostEl = document.getElementById('charge-cost');
+            const savingsYearEl = document.getElementById('savings-year');
+            const co2ReductionEl = document.getElementById('co2-reduction');
+            const fuelBar = document.getElementById('fuel-bar');
+            const chargeBar = document.getElementById('charge-bar');
+
+            const fuelPrice = 1.75; // € per liter
+            const electricityPrice = 0.30; // € per kWh
+            const teslaConsumption = 17; // kWh per 100km
+            const co2PerLiter = 2.33; // kg CO2 per liter petrol
+
+            function calculateSavings() {
+                const kmPerWeek = parseInt(kmSlider.value);
+                const kmPerMonth = kmPerWeek * 4.33;
+                const fuelConsumption = parseFloat(carType.value);
+
+                // Fuel costs
+                const litersPerMonth = (kmPerMonth / 100) * fuelConsumption;
+                const monthlyFuelCost = litersPerMonth * fuelPrice;
+                
+                // Charge costs
+                const kwhPerMonth = (kmPerMonth / 100) * teslaConsumption;
+                const monthlyChargeCost = kwhPerMonth * electricityPrice;
+
+                // Savings
+                const yearlySavings = (monthlyFuelCost - monthlyChargeCost) * 12;
+                const yearlyCO2Reduction = (litersPerMonth * co2PerLiter * 12) / 1000; // in tons
+
+                // Update UI
+                kmValue.textContent = kmPerWeek;
+                fuelCostEl.textContent = `€${monthlyFuelCost.toFixed(2)}`;
+                chargeCostEl.textContent = `€${monthlyChargeCost.toFixed(2)}`;
+                savingsYearEl.textContent = `~ €${Math.round(yearlySavings).toLocaleString('de-DE')}`;
+                co2ReductionEl.textContent = `~ ${yearlyCO2Reduction.toFixed(1)} t`;
+
+                // Update bars
+                const maxCost = Math.max(monthlyFuelCost, 200); // Ensure bar is not too small
+                const fuelBarWidth = (monthlyFuelCost / maxCost) * 100;
+                const chargeBarWidth = (monthlyChargeCost / maxCost) * 100;
+                fuelBar.style.width = `${Math.min(100, fuelBarWidth)}%`;
+                chargeBar.style.width = `${Math.min(100, chargeBarWidth)}%`;
+            }
+
+            kmSlider.addEventListener('input', calculateSavings);
+            carType.addEventListener('change', calculateSavings);
+            calculateSavings(); // Initial calculation
+
+            // --- Service/App Tab Logic ---
+            const tabApp = document.getElementById('tab-app');
+            const tabService = document.getElementById('tab-service');
+            const contentApp = document.getElementById('content-app');
+            const contentService = document.getElementById('content-service');
+            
+            tabApp.addEventListener('click', () => {
+                contentApp.classList.remove('hidden');
+                contentService.classList.add('hidden');
+                tabApp.classList.add('border-red-500', 'text-white');
+                tabApp.classList.remove('border-transparent', 'text-gray-400');
+                tabService.classList.add('border-transparent', 'text-gray-400');
+                tabService.classList.remove('border-red-500', 'text-white');
+            });
+
+            tabService.addEventListener('click', () => {
+                contentService.classList.remove('hidden');
+                contentApp.classList.add('hidden');
+                tabService.classList.add('border-red-500', 'text-white');
+                tabService.classList.remove('border-transparent', 'text-gray-400');
+                tabApp.classList.add('border-transparent', 'text-gray-400');
+                tabApp.classList.remove('border-red-500', 'text-white');
+            });
+
+
+            // --- Timeline Modal Logic ---
+            const modal = document.getElementById('modal');
+            const closeModalBtn = document.getElementById('close-modal');
+            const modalTitle = document.getElementById('modal-title');
+            const modalText = document.getElementById('modal-text');
+            const modalImage = document.getElementById('modal-image');
+
+            const timelineData = {
+                'update-1': {
+                    title: "Winter-Effizienz-Update (Dezember '24)",
+                    text: "Ein Firmware-Ingenieur erklärt, wie eine optimierte Wärmepumpen-Software die Reichweite bei kalten Temperaturen um bis zu 15% erhöht, ohne dass Sie eine Werkstatt besuchen müssen.",
+                    image: "https://placehold.co/600x400/3B82F6/FFFFFF?text=Wärmepumpen-Video"
+                },
+                'update-2': {
+                    title: "Hochauflösende Einpark-Visualisierung (April '25)",
+                    text: "Ein Vision-Spezialist zeigt, wie das Auto seine Umgebung in 3D erfasst und auf dem Display anzeigt, um das Einparken in engen Lücken zentimetergenau und stressfrei zu machen.",
+                    image: "https://placehold.co/600x400/10B981/FFFFFF?text=Einpark-Video"
+                },
+                'update-3': {
+                    title: "Neues User Interface & Apps (August '25)",
+                    text: "Ein UI/UX-Designer präsentiert das neue, anpassbare Interface und integrierte Apps, die Ihr Auto zum mobilen Büro oder Unterhaltungszentrum machen.",
+                    image: "https://placehold.co/600x400/F59E0B/FFFFFF?text=UI-Video"
+                },
+                'update-4': {
+                    title: "Autopilot auf Landstrassen (Oktober '25)",
+                    text: "Ein Autopilot-Ingenieur spricht über die nächste Generation des Fahrens. Das System unterstützt nun auch auf kurvigen Landstrassen und macht lange Fahrten sicherer und entspannter.",
+                    image: "https://placehold.co/600x400/EF4444/FFFFFF?text=Autopilot-Video"
+                }
+            };
+
+            document.querySelectorAll('.timeline-event').forEach(event => {
+                event.addEventListener('click', () => {
+                    const eventId = event.dataset.eventId;
+                    const data = timelineData[eventId];
+                    modalTitle.textContent = data.title;
+                    modalText.textContent = data.text;
+                    modalImage.src = data.image;
+                    modal.classList.remove('hidden');
+                    setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                });
+            });
+
+            function closeModal() {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+
+            closeModalBtn.addEventListener('click', closeModal);
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+
