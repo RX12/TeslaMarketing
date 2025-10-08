@@ -197,6 +197,7 @@
                                     <div class="mt-4 bg-green-900 bg-opacity-60 border-l-4 border-green-500 p-3 rounded text-green-200 text-sm flex items-center gap-2">
                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-400 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m4 0h-1v-4h-1m-4 0h-1v-4h-1m4 0h-1v-4h-1" /></svg>
                                         <span><b>Supercharger Vorteil:</b> Tesla Fahrer laden an Tesla Superchargern günstiger als Fremdmarken – exklusiv für Tesla Kunden.</span>
+                                        <a href="https://www.tcs.ch/de/testberichte-ratgeber/ratgeber/elektromobilitaet/schnellladestationen-schweiz.php" target="_blank" rel="noopener noreferrer" class="ml-4 inline-block px-3 py-1 bg-green-700 hover:bg-green-600 text-white text-xs font-semibold rounded transition-colors">Preisvergleich</a>
                                     </div>
                                 </div>
                             </div>
@@ -204,12 +205,52 @@
                                 <div>
                                     <p class="text-gray-400">Ersparnis/Jahr</p>
                                     <p id="savings-year" class="text-2xl font-bold text-green-400">~ €1,260</p>
+                                    <p class="text-xs text-gray-400 mt-1">Hinweis: Nur Stromkosten berücksichtigt.</p>
                                 </div>
                                 <div>
                                     <p class="text-gray-400">CO2-Reduktion/Jahr</p>
                                     <p id="co2-reduction" class="text-2xl font-bold">~ 1.8 t</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <!-- Charging Network Reliability Sub-section -->
+                    <div class="mt-20 pt-12 border-t border-gray-800 text-center max-w-4xl mx-auto fade-in-section">
+                        <h3 class="text-2xl font-bold mb-4">Laden, auf das Sie sich verlassen können.</h3>
+                        <p class="text-gray-400 max-w-2xl mx-auto mb-10">Das Supercharger-Netzwerk ist nicht nur das grösste, sondern auch das zuverlässigste Schnellladenetz der Welt. Das belegen die Zahlen.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+                            <div class="bg-[#111] p-6 rounded-lg">
+                                <p class="text-4xl font-bold text-red-500">99,95%</p>
+                                <p class="text-gray-400 mt-2">Netzwerk-Verfügbarkeit</p>
+                            </div>
+                            <div class="bg-[#111] p-6 rounded-lg">
+                                <p class="text-4xl font-bold text-red-500">&gt;14.000</p>
+                                <p class="text-gray-400 mt-2">Ladepunkte in Europa</p>
+                            </div>
+                            <div class="bg-[#111] p-6 rounded-lg">
+                                <p class="text-4xl font-bold text-red-500">0</p>
+                                <p class="text-gray-400 mt-2">Ladekarten oder Apps nötig</p>
+                            </div>
+                        </div>
+                        <div class="flex justify-center space-x-4">
+                            <a href="https://www.tesla.com/findus?v=2&bounds=71.21802999999999%2C47.2693719%2C24.7813084%2C-13.23242&zoom=5&filters=supercharger" target="_blank" class="text-gray-300 border border-gray-600 rounded-md px-5 py-2 hover:bg-gray-800 hover:border-gray-500 transition-colors">
+                                Live-Karte ansehen
+                            </a>
+                            <a href="#" class="text-gray-300 border border-gray-600 rounded-md px-5 py-2 hover:bg-gray-800 hover:border-gray-500 transition-colors">
+                                    Zuverlässigkeits-Report
+                                </a>
+                                <script>
+                                // Button-Link für Zuverlässigkeits-Report setzen
+                                document.addEventListener('DOMContentLoaded', function () {
+                                    var reportBtn = document.querySelector('a[href="#"]:contains("Zuverlässigkeits-Report")');
+                                    if (reportBtn) {
+                                        reportBtn.href = "https://www.elektroauto-news.net/news/bewertungen-europa-bestes-ladenetz";
+                                        reportBtn.target = "_blank";
+                                        reportBtn.rel = "noopener noreferrer";
+                                    }
+                                });
+                                </script>
+                                </a>
                         </div>
                     </div>
                     <div class="text-center mt-10 text-gray-400 border-t border-gray-800 pt-6">
@@ -333,7 +374,8 @@
                          <h3 class="font-bold text-xl mb-2">Tesla Model 3</h3>
                         <p class="text-yellow-400 text-2xl mb-3">★★★★★</p>
                         <p class="text-gray-300 font-semibold">Euro NCAP</p>
-                            <p class="text-gray-400 mt-4 text-sm border-t border-gray-700 pt-4"><span class="font-bold text-red-500">Bestnote (98%) in der Kategorie "Safety Assist" – die höchste je vergebene.</span></p>
+                            <p class="text-gray-400 mt-4 text-sm border-t border-gray-700 pt-4"><span class="font-bold text-red-500">Bestnoten: Safety Assist: 87%, Vulnerable Road Users: 89%</span></p>
+                            <a href="https://www.euroncap.com/en/results/tesla/model+3/54892" target="_blank" rel="noopener noreferrer" class="mt-2 inline-block px-3 py-1 bg-blue-700 hover:bg-blue-600 text-white text-xs font-semibold rounded transition-colors">Testergebnisse</a>
                     </div>
                      <!-- Safety Card 3 -->
                     <div class="bg-[#111] p-6 rounded-lg text-center">
@@ -412,9 +454,8 @@
 
         <!-- Final CTA Section -->
         <section id="final-cta" class="py-20 lg:py-32 bg-[#0a0a0a]">
-            <div class="relative">
-                <div class="pointer-events-none select-none fixed left-0 bottom-0 w-full h-[60vh] z-0" style="background: url('tesla-bg.jpg') center bottom/cover no-repeat; opacity: 0.7;"></div>
-                <div class="container mx-auto px-6 text-center fade-in-section relative z-10">
+        <section id="final-cta" class="py-20 lg:py-32 bg-[#0a0a0a]" style="background: linear-gradient(to top, rgba(10,10,10,0.95) 60%, rgba(10,10,10,0.7) 100%), url('tesla-bg.jpg') center bottom/cover no-repeat;">
+            <div class="container mx-auto px-6 text-center fade-in-section relative z-10">
                 <h2 class="text-3xl lg:text-5xl font-bold mb-4">Jetzt sind Sie dran.<br>Erfahren Sie die Fakten selbst.</h2>
                 <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-8">Buchen Sie Ihre kostenlose 48-Stunden-Probefahrt und erleben Sie den Unterschied im Alltag – ohne Verkaufsdruck, ohne Verpflichtungen.</p>
                 <button class="bg-white text-black font-bold px-10 py-4 rounded-md text-xl hover:bg-gray-200 transition-colors">
@@ -471,8 +512,8 @@
             const fuelBar = document.getElementById('fuel-bar');
             const chargeBar = document.getElementById('charge-bar');
 
-            const fuelPrice = 1.75; // € per liter
-            const electricityPrice = 0.30; // € per kWh
+            const fuelPrice = 1.68; // CHF pro Liter (Schweiz, Stand 2025)
+            const electricityPrice = 0.28; // CHF pro kWh (Schweiz, Stand 2025)
             const teslaConsumption = 17; // kWh per 100km
             const co2PerLiter = 2.33; // kg CO2 per liter petrol
 
@@ -495,9 +536,9 @@
 
                 // Update UI
                 kmValue.textContent = kmPerWeek;
-                fuelCostEl.textContent = `€${monthlyFuelCost.toFixed(2)}`;
-                chargeCostEl.textContent = `€${monthlyChargeCost.toFixed(2)}`;
-                savingsYearEl.textContent = `~ €${Math.round(yearlySavings).toLocaleString('de-DE')}`;
+                fuelCostEl.textContent = `CHF ${monthlyFuelCost.toFixed(2)}`;
+                chargeCostEl.textContent = `CHF ${monthlyChargeCost.toFixed(2)}`;
+                savingsYearEl.textContent = `~ CHF ${Math.round(yearlySavings).toLocaleString('de-CH')}`;
                 co2ReductionEl.textContent = `~ ${yearlyCO2Reduction.toFixed(1)} t`;
 
                 // Update bars
